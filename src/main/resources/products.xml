@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+	<product name="YUNFOR" code="admin" module="admin"></product>
+	<product name="项目二" code="admin2" module="admin2"></product>
+</products>
