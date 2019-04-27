@@ -5,12 +5,14 @@ import com.wanou.system.model.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
+import java.util.List;
+
 public interface userRepository extends JpaRepository<user, String>, JpaSpecificationExecutor<user> {
     /**
-     * 根据微信头像查询
-     * @param nickName
+     * 根据微信wxId
+     * @param
      * @return
      */
-    user findAllByNickName(String nickName);
+    List<user> findAllByWxId(String wxId);
 
 }

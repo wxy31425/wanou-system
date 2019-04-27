@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/user/")
 public class userApi {
@@ -27,22 +29,31 @@ public class userApi {
             @ApiImplicitParam(name="bz",value="备注",dataType="String", paramType = "query"),
             @ApiImplicitParam(name="lat",value="经度",dataType="String", paramType = "query"),
             @ApiImplicitParam(name="lon",value="纬度",dataType="String", paramType = "query"),
-            @ApiImplicitParam(name="src",value="微信头像",dataType="String", paramType = "query")
+            @ApiImplicitParam(name="code",value="微信code",dataType="String", paramType = "query"),
     })
     public ResponseEntity<user> add (String name, String zy, String dh,
                                      String dz, String bz, String lon,
-                                     String lat, String src){
-        user user =  userService.addOneUser(name,zy,dh,dz,bz,lon,lat,src);
+                                     String lat,String code){
+        user user =  userService.addOneUser(name,zy,dh,dz,bz,lon,lat, code);
         return ResponseEntity.ok(user);
      }
 
+//    @ApiOperation(value = "根据意向客户的微信code查询气泡标注点")
+//    @GetMapping("findUserByWxId")
+//    @ApiImplicitParam(name="wxId",value="微信code",dataType="String", paramType = "query")
+//    @ResponseBody
+//    public List<user> findUserByMarker(String code){
+//        return userService.findUserByWxId(code);
+//    }
 
-    @ApiOperation(value = "根据意向客户的微信昵称查询")
-    @GetMapping("findUserByNickname")
-    @ApiImplicitParam(name="src",value="微信头像",dataType="String", paramType = "query")
+
+
+    @ApiOperation(value = "根据意向客户的微信code查询")
+    @GetMapping("findUserByWxId")
+    @ApiImplicitParam(name="wxId",value="微信Id",dataType="String", paramType = "query")
     @ResponseBody
-    public user findUserByNickname (String src){
-        return userService.findUserByNickname(src);
+    public List<user> findUserByWxId (String code){
+        return userService.findUserByWxId(code);
     }
 
 

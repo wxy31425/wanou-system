@@ -11,10 +11,9 @@ import java.util.Date;
 @Table(name = "user")
 public class user  {
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid")
-    @Column(columnDefinition = "char(32)", nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     /**
      * 客户姓名
@@ -60,20 +59,41 @@ public class user  {
     private Date uploadTime;
 
     /**
-     * 微信昵称
+     * 微信用户wxId
      */
-    private String nickName;
+    private String wxId;
 
     /**
-     * 微信头像
+     * 内容
      */
-    private String headImg;
+    private String content;
+    /**
+     * 背景色
+     */
+    private String bgColor;
+    /**
+     * 边框色
+     */
+    private String borderColor;
+    /**
+     * 文本颜色
+     */
+    private String color;
+    /**
+     * 边框宽度
+     */
+    private int borderWidth;
 
-    public String getId() {
+    /**
+     * 文本边缘留白
+     */
+    private int padding;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -141,21 +161,60 @@ public class user  {
         this.uploadTime = uploadTime;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getWxId() {
+        return wxId;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
-    public String getHeadImg() {
-        return headImg;
-    }
-
-    public void setHeadImg(String headImg) {
-        this.headImg = headImg;
+    public void setWxId(String wxId) {
+        this.wxId = wxId;
     }
 
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getBgColor() {
+        return bgColor;
+    }
+
+    public void setBgColor(String bgColor) {
+        this.bgColor = bgColor;
+    }
+
+    public String getBorderColor() {
+        return borderColor;
+    }
+
+    public void setBorderColor(String borderColor) {
+        this.borderColor = borderColor;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getBorderWidth() {
+        return borderWidth;
+    }
+
+    public void setBorderWidth(int borderWidth) {
+        this.borderWidth = borderWidth;
+    }
+
+    public int getPadding() {
+        return padding;
+    }
+
+    public void setPadding(int padding) {
+        this.padding = padding;
+    }
 }
