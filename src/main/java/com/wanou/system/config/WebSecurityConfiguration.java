@@ -32,6 +32,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/services/**").permitAll()
                 .antMatchers("/css/**", "/layui/**", "/images/**", "/js/**").permitAll()
                 .antMatchers("/swagger-ui.html").authenticated()
+                .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").failureUrl("/login?error")
                 .successHandler((request,reponse, authentication) -> {

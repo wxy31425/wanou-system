@@ -48,9 +48,10 @@ public class userService {
                 logger.info(requestUrl);
                 // 发起GET请求获取凭证
                 JSONObject jsonObject = HttpUtils.httpsRequest(requestUrl, "GET", null);
+                logger.info("微信绑定OpenId："+ jsonObject.toString());
                 if (jsonObject != null) {
+                    map.put("openid", jsonObject.getString("openid"));
                     try {
-
                         user.setName(name);
                         user.setJob(job);
                         user.setPhone(phone);

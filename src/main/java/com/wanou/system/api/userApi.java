@@ -19,8 +19,8 @@ public class userApi {
      userService userService;
 
     @ApiOperation(value = "意向客户上传的信息")
-    @PostMapping("add")
-    @ResponseBody
+    @CrossOrigin
+    @GetMapping("add")
     @ApiImplicitParams({
             @ApiImplicitParam(name="name",value="客户姓名",dataType="string", paramType = "query"),
             @ApiImplicitParam(name="zy",value="客户职业",dataType="String", paramType = "query") ,
@@ -49,8 +49,9 @@ public class userApi {
 
 
     @ApiOperation(value = "根据意向客户的微信code查询")
+    @CrossOrigin
     @GetMapping("findUserByWxId")
-    @ApiImplicitParam(name="wxId",value="微信Id",dataType="String", paramType = "query")
+    @ApiImplicitParam(name="code",value="code",dataType="String", paramType = "query")
     @ResponseBody
     public List<user> findUserByWxId (String code){
         return userService.findUserByWxId(code);
