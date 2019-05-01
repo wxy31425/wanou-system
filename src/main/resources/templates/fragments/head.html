@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 <header th:fragment="header">
     <div class="layui-layout layui-layout-admin">
@@ -7,7 +8,9 @@
         <a href="javascript:;" class="layui-hide-xs">
             <a href="/home" style="font-weight: bold;">
                 <div class="layui-logo">后台管理系统
+                    <sec:authentication property="id"/>
                 </div>
+
             </a>
         </a>
         <a href="javascript:;" class="layui-hide-xs">
