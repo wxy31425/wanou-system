@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead"></head>
+<script type="text/javascript" src="../js/user/user_list.js"></script>
+
+<body>
+<div class="weadmin-nav">
+			<span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">会员管理</a>
+        <a>
+          <cite>会员管理列表</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-sm" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="weadmin-body">
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form">
+            <div class="layui-inline">
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="operStartTime" placeholder="请选择开始日期"/>
+                </div>
+                -----
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="operEndTime" placeholder="请选择结束日期"/>
+                </div>
+                <div class="layui-input-inline">
+                    <select id="perm">
+                        <option value="">请选择授权状态</option>
+                        <option value="0">未授权</option>
+                        <option value="1">已授权</option>
+                    </select>
+                </div>
+            <a class="layui-btn search_btn" data-type="reload">搜索</a>
+            </div>
+            <div class="layui-inline">
+                <a class="layui-btn  layui-btn-normal edit_btn">编辑</a>
+            </div>
+
+            <div class="layui-inline">
+            <a class="layui-btn layui-btn-danger layui-btn-normal delAll_btn">删除</a>
+            </div>
+
+            <div class="layui-inline">
+             <a class="layui-btn layui-btn-warm layui-btn-normal permAll_btn">权限</a>
+            </div>
+
+        </form>
+    </blockquote>
+    <table id="userList" lay-filter="userList"></table>
+</div>
+</body>
+</html>

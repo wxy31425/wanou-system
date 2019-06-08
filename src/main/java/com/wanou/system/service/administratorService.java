@@ -41,4 +41,12 @@ public class administratorService implements UserDetailsService {
         return userDetail;
     }
 
+    /**
+     * 修改密码
+     * @param admin
+     */
+    public void save(adminstrator admin) {
+        administratorRepository.save(admin);
+    }
+
 }

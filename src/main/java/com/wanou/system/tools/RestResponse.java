@@ -1,5 +1,6 @@
 package com.wanou.system.tools;
 
+import com.wanou.system.util.ConstantUtils;
 import org.slf4j.Marker;
 import java.util.HashMap;
 import java.util.List;
@@ -9,20 +10,34 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 public class RestResponse extends HashMap<String, Object> {
-    public static RestResponse success(List<Marker> markers){
-        return success("成功");
-    }
-    public static RestResponse success(String message){
+
+
+    public static RestResponse success(boolean status,String message){
         RestResponse restResponse = new RestResponse();
-        restResponse.setSuccess(true);
-        restResponse.setMessage(message);
+        restResponse.setSuccess(status);
+        restResponse.setMsg(message);
         return restResponse;
     }
 
-    public static RestResponse failure(String message){
+    public static RestResponse failure(boolean status,String message){
         RestResponse restResponse = new RestResponse();
-        restResponse.setSuccess(false);
-        restResponse.setMessage(message);
+        restResponse.setSuccess(status);
+        restResponse.setMsg(message);
+        return restResponse;
+    }
+
+    public static RestResponse msgData (List<?> data){
+        RestResponse restResponse = new RestResponse();
+        restResponse.setData(data);
+        return restResponse;
+    }
+
+    public static RestResponse msgReturn (Long count,List<?> data){
+        RestResponse restResponse = new RestResponse();
+        restResponse.setCode(0);
+        restResponse.setMsg("");
+        restResponse.setCount(count);
+        restResponse.setData(data);
         return restResponse;
     }
 
@@ -32,8 +47,8 @@ public class RestResponse extends HashMap<String, Object> {
         return this;
     }
 
-    public RestResponse setMessage(String message) {
-        if (message != null) put("message", message);
+    public RestResponse setMsg(String msg) {
+        if (msg != null) put("msg", msg);
         return this;
     }
 
@@ -42,28 +57,13 @@ public class RestResponse extends HashMap<String, Object> {
         return this;
     }
 
-    public RestResponse setPage(Integer page) {
-        if (page != null) put("page", page);
-        return this;
-    }
-    
-    public RestResponse setCurrentPage(Integer currentPage){
-    	if (currentPage != null) put("currentPage", currentPage);
+    public RestResponse setCount(Long count) {
+        if (count != null) put("count", count);
         return this;
     }
 
-    public RestResponse setLimit(Integer limit) {
-        if (limit != null) put("limit", limit);
-        return this;
-    }
-
-    public RestResponse setTotal(Long total) {
-        if (total != null) put("total", total);
-        return this;
-    }
-
-    public RestResponse setAny(String key, Object value) {
-        if (key != null && value != null) put(key, value);
+    public RestResponse setCode(Integer code) {
+        if (code != null) put("code", code);
         return this;
     }
 }

@@ -33,8 +33,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**", "/layui/**", "/images/**", "/js/**").permitAll()
                 .antMatchers("/swagger-ui.html").authenticated()
                 .antMatchers("/api/**").permitAll()
+
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").failureUrl("/login?error")
+                .and().formLogin().loginPage("/login")
                 .successHandler((request,reponse, authentication) -> {
                  PrintWriter writer = reponse.getWriter();
                     writer.print(true);
@@ -43,7 +44,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                     exception.printStackTrace();
                 })).permitAll()
-                .and().logout().permitAll();
+                .and().logout().logoutUrl("/loginOut")
+                .permitAll();
+        http.headers().frameOptions().sameOrigin();
     }
 
     @Override

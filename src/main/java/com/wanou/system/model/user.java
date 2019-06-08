@@ -13,7 +13,7 @@ public class user  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     /**
      * 客户姓名
@@ -67,33 +67,30 @@ public class user  {
      * 内容
      */
     private String content;
-    /**
-     * 背景色
-     */
-    private String bgColor;
-    /**
-     * 边框色
-     */
-    private String borderColor;
-    /**
-     * 文本颜色
-     */
-    private String color;
-    /**
-     * 边框宽度
-     */
-    private int borderWidth;
 
     /**
-     * 文本边缘留白
+     * 权限
+     * 1：授权 2：未授权
      */
-    private int padding;
+     private int perm = 0;
 
-    public Long getId() {
+    /**
+     * 状态删除
+     */
+    private int isDelete = 0;
+
+    /**
+     * 微信用户昵称
+     */
+    private String wxName;
+
+    private String flag;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -178,43 +175,35 @@ public class user  {
         this.content = content;
     }
 
-    public String getBgColor() {
-        return bgColor;
+    public int getPerm() {
+        return perm;
     }
 
-    public void setBgColor(String bgColor) {
-        this.bgColor = bgColor;
+    public void setPerm(int perm) {
+        this.perm = perm;
     }
 
-    public String getBorderColor() {
-        return borderColor;
+    public int getIsDelete() {
+        return isDelete;
     }
 
-    public void setBorderColor(String borderColor) {
-        this.borderColor = borderColor;
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
     }
 
-    public String getColor() {
-        return color;
+    public String getWxName() {
+        return wxName;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setWxName(String wxName) {
+        this.wxName = wxName;
     }
 
-    public int getBorderWidth() {
-        return borderWidth;
+    public String getFlag() {
+        return flag;
     }
 
-    public void setBorderWidth(int borderWidth) {
-        this.borderWidth = borderWidth;
-    }
-
-    public int getPadding() {
-        return padding;
-    }
-
-    public void setPadding(int padding) {
-        this.padding = padding;
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }

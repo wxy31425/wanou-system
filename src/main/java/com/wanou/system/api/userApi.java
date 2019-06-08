@@ -30,21 +30,14 @@ public class userApi {
             @ApiImplicitParam(name="lat",value="经度",dataType="String", paramType = "query"),
             @ApiImplicitParam(name="lon",value="纬度",dataType="String", paramType = "query"),
             @ApiImplicitParam(name="code",value="微信code",dataType="String", paramType = "query"),
+            @ApiImplicitParam(name="yhxx",value="微信用户信息",dataType="String", paramType = "query"),
     })
     public ResponseEntity<user> add (String name, String zy, String dh,
                                      String dz, String bz, String lon,
-                                     String lat,String code){
-        user user =  userService.addOneUser(name,zy,dh,dz,bz,lon,lat, code);
+                                     String lat,String code,String yhxx){
+        user user =  userService.addOneUser(name,zy,dh,dz,bz,lon,lat, code,yhxx);
         return ResponseEntity.ok(user);
      }
-
-//    @ApiOperation(value = "根据意向客户的微信code查询气泡标注点")
-//    @GetMapping("findUserByWxId")
-//    @ApiImplicitParam(name="wxId",value="微信code",dataType="String", paramType = "query")
-//    @ResponseBody
-//    public List<user> findUserByMarker(String code){
-//        return userService.findUserByWxId(code);
-//    }
 
 
 

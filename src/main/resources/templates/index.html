@@ -1,16 +1,130 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="layout :: htmlhead" th:with="title='后台管理'"></head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <!--头-->
-    <div th:replace="fragments/head :: header"></div>
+<!--head部分-->
+<head th:include="layout :: htmlhead"></head>
+<!-- 顶部开始 -->
+<div class="container">
+    <div class="logo">
+        <a href="./index.html">万欧管理系统</a>
+    </div>
+    <div class="left_open">
+        <i title="展开左侧栏" class="layui-icon layui-icon-shrink-right"></i>
 
-    <!--主体区域-->
-    <script type="text/javascript" src="/js/error.js"></script>
-    <!--底部-->
-    <div th:replace="fragments/footer :: footer"></div>
+    </div>
+    <ul class="layui-nav right" lay-filter="">
+        <li class="layui-nav-item"><span th:text="${userDetails.account}"></span></li>
+        <li class="layui-nav-item"><a onclick="updatePw()">修改密码</a></li>
+        <li class="layui-nav-item"><a onclick="loginOut()">退出</a></li>
+
+    </ul>
+
 </div>
-</body>
-</html>
+<!-- 顶部结束 -->
+<!-- 中部开始 -->
+<!-- 左侧菜单开始 -->
+<div class="left-nav">
+    <div id="side-nav">
+        <ul id="nav">
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>客户</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/toUser">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>客户管理</cite>
 
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>地图</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/toMap">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>地图管理</cite>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="layui-tab tab" lay-filter="wenav_tab" id="WeTabTip" lay-allowclose="true">
+        <ul class="layui-tab-title" id="tabName">
+            <li>会员管理</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <iframe src='/toUser' frameborder="0" scrolling="yes" class="weIframe"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content-bg"></div>
+<!-- 右侧主体结束 -->
+<!-- 中部结束 -->
+<!-- 底部开始 -->
+<div class="footer">
+    <div class="copyright">©2018 天行工作室 v1.0 All</div>
+</div>
+
+<script type="text/javascript">
+    layui.config({
+        base: '/js/'
+        , version: '101100'
+    }).use('index');
+    // layui.use(['jquery', '、index'], function () {
+    //     var $ = layui.jquery;
+    // });
+
+    function updatePw() {
+        layer.confirm('确定是否修改密码？', {icon: 3, title: '提示信息'}, function (index) {
+            if (index) {
+                dialogPassword();
+                layer.close(index);
+            }
+        });
+    }
+
+    /**
+     * 密码弹框
+     * @param edit
+     */
+    function dialogPassword() {
+        width = "820px", height = "500px";
+        title = "修改密码";
+        layui.layer.open({
+            title: title,
+            type: 2,
+            area: [width, height],
+            content: "updatePwd",
+            success: function (index) {
+                layui.layer.getChildFrame('body', index);
+            }
+        })
+    }
+
+    function loginOut() {
+        layer.confirm('确定是否退出登录？', {icon: 3, title: '提示信息'}, function (index) {
+            if (index) {
+                window.location.href = "../logout";
+            }
+        });
+    }
+
+
+</script>
+
+</html>

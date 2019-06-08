@@ -23,7 +23,7 @@ public class AdminInterceptor implements HandlerInterceptor {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");  
         /*后台session控制*/
-        String[] noFilters = new String[]{"login", "login.do", "loginVlidate.do","error"};
+        String[] noFilters = new String[]{"login", "login.do", "loginVlidate.do","logout.do","error"};
         String uri = request.getRequestURI();
         boolean beFilter = true;
         for (String s : noFilters) {

@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead"></head>
+<script src="../js/user/user_dialog.js"></script>
+
+
+<body class="childrenBody">
+<form id="userEdit" class="layui-form" action="">
+    <input type="hidden" id="id" name="id" th:value="${user.id}"/>
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">客户姓名</label>
+            <div class="layui-input-block" style="width: 300px;">
+                <input type="text" class="layui-input" name="name" lay-verify="required" placeholder="请输入客户姓名"
+                       th:value="${user.name}"/>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">客户电话</label>
+            <div class="layui-input-block" style="width:300px">
+                <input type="text" class="layui-input" name="phone" lay-verify="checkMobile" placeholder="请输入客户电话"
+                       th:value="${user.phone}"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">客户职业</label>
+            <div class="layui-input-block"  style="width:300px">
+                <input type="text" class="layui-input" name="job" lay-verify="required" placeholder="请输入客户职业"
+                      th:value="${user.job}"/>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">客户地址</label>
+            <div class="layui-input-block" style="width:300px">
+                <input type="text" class="layui-input" name="address" lay-verify="required" placeholder="请输入客户地址"
+                       th:value="${user.address}"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">客户备注</label>
+        <div class="layui-input-block"  style="width:720px">
+            <textarea placeholder="请输入内容" name="remark" class="layui-textarea" th:text="${user.remark}"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" type="reset">重置</button>
+            <button  class="layui-btn layui-btn-nomal" lay-submit="" lay-filter="save">保存</button>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
